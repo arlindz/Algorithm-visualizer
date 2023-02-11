@@ -83,7 +83,6 @@ window.addEventListener('load', function () {
         let numOfEls = numberOfElements
         for (let i = 0; i < numOfEls; i++)
             array.push(Math.floor(Math.random() * 80) + 21);
-        console.log(array);
         let string = "<div id='sorting-container'class='container'><div id='sorting-area' class='sorting-area'>";
         for (let i = 0; i < numOfEls; i++)
             string += "<div id='element" + i + "' class='array-element'></div>"
@@ -100,7 +99,6 @@ window.addEventListener('load', function () {
         }
         async function mergeS(a) {
             async function merge(arr, array1, array2, start1, start2) {
-                console.log("current arrays to merge [" + array1 + "], [" + array2 + "] start1 is " + start1 + " start2 is " + start2);
                 let i = 0, j = 0, k = 0, startRef = start1;
                 if (currentId != "merge-sort") return;
                 document.getElementById("element" + start1).style.backgroundColor = "red";
@@ -119,7 +117,6 @@ window.addEventListener('load', function () {
                     } else {
                         if (currentId != "merge-sort") return;
                         arr[k++] = array2[j];
-                        console.log(startRef);
                         document.getElementById("element" + start2).style.backgroundColor = "red"
                         await wait(secs);
                         if (currentId != "merge-sort") return;
@@ -137,7 +134,7 @@ window.addEventListener('load', function () {
                     document.getElementById("element" + start1).style.backgroundColor = "red"
                     await wait(secs);
                     if (currentId != "merge-sort") return;
-                    console.log("Start ref: " + startRef);
+                
 
                     document.getElementById("element" + startRef).style.height = h1 + "px";
                     document.getElementById("element" + start1).style.backgroundColor = "black";
@@ -196,7 +193,7 @@ window.addEventListener('load', function () {
         let numOfEls = numberOfElements
         for (let i = 0; i < numOfEls; i++)
             array.push(Math.floor(Math.random() * 80) + 21);
-        console.log(array);
+
         let string = "<div id='sorting-container'class='container'><div id='sorting-area' class='sorting-area'>";
         for (let i = 0; i < numOfEls; i++)
             string += "<div id='element" + i + "' class='array-element'></div>"
@@ -269,7 +266,7 @@ window.addEventListener('load', function () {
         let numOfEls = numberOfElements;
         for (let i = 0; i < numOfEls; i++)
             array.push(Math.floor(Math.random() * 80) + 21);
-        console.log(array);
+       
         let string = "<div id='sorting-container'class='container'><div id='sorting-area' class='sorting-area'>";
         for (let i = 0; i < numOfEls; i++)
             string += "<div id='element" + i + "' class='array-element'></div>"
@@ -379,7 +376,7 @@ window.addEventListener('load', function () {
         let numOfEls = numberOfElements;
         for (let i = 0; i < numOfEls; i++)
             array.push(Math.floor(Math.random() * 80) + 21);
-        console.log(array);
+      
         let string = "<div id='sorting-container'class='container'><div id='sorting-area' class='sorting-area'>";
         for (let i = 0; i < numOfEls; i++)
             string += "<div id='element" + i + "' class='array-element'></div>"
@@ -442,7 +439,7 @@ window.addEventListener('load', function () {
         let numOfEls = numberOfElements;
         for (let i = 0; i < numOfEls; i++)
             array.push(Math.floor(Math.random() * 80) + 21);
-        console.log(array);
+      
         let string = "<div id='sorting-container'class='container'><div id='sorting-area' class='sorting-area'>";
         for (let i = 0; i < numOfEls; i++)
             string += "<div id='element" + i + "' class='array-element'></div>"
@@ -506,7 +503,6 @@ window.addEventListener('load', function () {
         let marked = [];
         let edgeTo = [];
         let secs = delay;
-        console.log("delay" + secs);
         let rows = gridSize[0], cols = gridSize[1];
         for (let i = 0; i < rows; i++) {
             let cG = [];
@@ -531,7 +527,7 @@ window.addEventListener('load', function () {
         async function search(t) {
             let I = starts.start[0] == null ? 0 : starts.start[0], J = starts.start[1] == null ? 0 : starts.start[1];
             let queue = [[I, J, null, null, 0]];
-            console.log(queue);
+       
             let resCoordinates = [];
             while (queue.length != 0) {
                 let current = queue.shift();
@@ -540,7 +536,7 @@ window.addEventListener('load', function () {
                 if ((current[0] + "," + current[1]) in wallCoordinates) continue;
                 marked[current[0]][current[1]] = true;
                 document.getElementById("block" + I + "," + J).style.backgroundColor = colors.start;
-                console.log(current[0] + "," + current[1]);
+              
                 if ((current[0] + "," + current[1]) in t) {
                     edgeTo[current[0]][current[1]] = [current[2], current[3], current[4]];
                     document.getElementById("block" + current[0] + "," + current[1]).style.backgroundColor = "rgb(81, 14, 74)";
@@ -558,10 +554,10 @@ window.addEventListener('load', function () {
                 queue.push([current[0], current[1] + 1, current[0], current[1], current[4] + 1]);
                 queue.push([current[0], current[1] - 1, current[0], current[1], current[4] + 1]);
                 async function highlight(resCoordinates) {
-                    console.log("highlighting...")
+                   
                     let i = resCoordinates[0], j = resCoordinates[1];
                     let toIterate = [[i, j]];
-                    console.log(edgeTo[i][j][0]);
+                 
                     while (i != starts.start[0] || j != starts.start[1]) {
                         toIterate.push([i, j]);
                         let refI = i, refJ = j;
@@ -574,13 +570,13 @@ window.addEventListener('load', function () {
                     }
                     toIterate.push([starts.start[0], starts.start[1]]);
                     for (let k = toIterate.length - 1; k >= 0; k--) {
-                        console.log("Trying to iterate over coordinates: " + toIterate[k][0] + ", " + toIterate[k][1]);
+                     
                         await wait(secs);
                         document.getElementById("block" + toIterate[k][0] + "," + toIterate[k][1]).style.backgroundColor = '#90EE90';
                     }
                     await wait(0.18)
                     for (let k = toIterate.length - 1; k >= 0; k--) {
-                        console.log("Trying to iterate over coordinates: " + toIterate[k][0] + ", " + toIterate[k][1]);
+                      
                         await wait(secs);
                         document.getElementById("block" + toIterate[k][0] + "," + toIterate[k][1]).style.backgroundColor = 'rgb(76, 186, 206)';
                     }
@@ -663,7 +659,7 @@ window.addEventListener('load', function () {
     function addRandomTargets(currentRows, currentCols) {
         document.getElementById("add-random-targets").addEventListener('click', function () {
             let e = document.getElementById("random-targets-count");
-            console.log("came, e is " + e.value);
+          
             let count = 0;
             if (e.value < 1 || e.value >= currentCols * currentRows / 3) count = 10;
             else count = Math.floor(e.value);
@@ -710,7 +706,7 @@ window.addEventListener('load', function () {
         for (let i = 0; i < arrayForIds.length; i++) {
             document.getElementById(arrayForIds[i]).addEventListener('click', function () {
                 currentMode = arrayForIds[i];
-                console.log("current-mode " + currentMode);
+               
             });
         }
         if (algorithm == 'bfs') addRandomTargets(currentRows, currentCols);
@@ -764,14 +760,14 @@ window.addEventListener('load', function () {
 
         if ((i + "," + j) in currentTargets) {
             if (currentTargets.currentTargetCount <= 1) {
-                console.log(currentTargets.currentTargetCount)
+             
                 return;
             }
             delete currentTargets[i + "," + j];
             currentTargets.currentTargetCount--;
             document.getElementById("block" + i + "," + j).style.backgroundColor = 'white';
         } else {
-            console.log("not in taregts");
+           
             currentTargets.currentTargetCount++;
             currentTargets[i + "," + j] = null;
             document.getElementById("block" + i + "," + j).style.backgroundColor = '#FFCCCB';
@@ -783,7 +779,7 @@ window.addEventListener('load', function () {
         let searchAreaHeight = document.getElementById("searching-area").clientHeight;
         let searchAreaWidth = document.getElementById("searching-area").clientWidth;
         let blockHeight = searchAreaHeight / numOfRows - 2;
-        console.log("blockHeight = " + blockHeight);
+       
         let searchAreaWidthToBeAssigned = Math.floor(searchAreaWidth / (blockHeight + 2)) * (blockHeight + 2);
         let numOfCols = Math.floor(searchAreaWidthToBeAssigned / (blockHeight + 2));
         document.getElementById("searching-container").remove();
@@ -801,7 +797,7 @@ window.addEventListener('load', function () {
                 document.getElementById("block" + i + "," + j).style.width = blockHeight + "px";
             }
         }
-        console.log("Number of rows: " + numOfRows + ", number of cols" + numOfCols + " width of searching area: " + document.getElementById("searching-area").clientWidth);
+    
         return [numOfRows, numOfCols];
     }
     function resetGrid(rows, cols, algorithm) {
@@ -858,10 +854,10 @@ window.addEventListener('load', function () {
         await bfsVar(i, j, edgeToFirst, "#CFDFFF", "#CF9FFF", "#E7D3FD");
         await halt();
         x = meetingCoordinates[0], y = meetingCoordinates[1];
-        console.log(meetingCoordinates);
+      
         let path = [];
         let temp1 = edgeToFirst.slice(), temp2 = edgeToSecond.slice();
-        console.log(temp1);
+       
         while (true) {
             path.push([x, y]);
             let refX = x, refY = y;
@@ -874,7 +870,7 @@ window.addEventListener('load', function () {
         }
         x = edgeToSecond[meetingCoordinates[0]][meetingCoordinates[1]][0];
         y = edgeToSecond[meetingCoordinates[0]][meetingCoordinates[1]][1];
-        console.log(edgeToSecond);
+       
         while (true) {
             path.unshift([x, y]);
             let refX = x
@@ -886,7 +882,7 @@ window.addEventListener('load', function () {
             }
         }
         for (let k = path.length - 1; k >= 0; k--) {
-            console.log("SHORTEST PATH CURRENT COORDINATE IS" + path[k][0] + "," + path[k][1]);
+           
             await wait(secs);
             document.getElementById("block" + path[k][0] + "," + path[k][1]).style.backgroundColor = "#90EE90";
             document.getElementById("block" + path[k][0] + "," + path[k][1]).style.border = "1px solid rgb(28, 185, 125)";
@@ -927,7 +923,7 @@ window.addEventListener('load', function () {
                 queue.push([x, y + 1, x, y, distance + 1]);
                 queue.push([x, y - 1, x, y, distance + 1]);
             }
-            console.log("outside while");
+         
             return edgeTo
         }
     }
